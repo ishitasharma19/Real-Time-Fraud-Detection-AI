@@ -1,0 +1,15 @@
+{
+    "name": "Ishita-Fraud-Detection-AI-Environment",
+    "dockerComposeFile": ["./docker-compose-devcontainer.yml"],
+    "service": "builder",
+    "initializeCommand": "scripts/devcontainer.sh",
+    "workspaceFolder": "/workspaces/Ishita-Fraud-Detection-AI",
+    "remoteEnv": { 
+        "DEVELOPER": "Ishita Sharma",
+        "PROJECT_VERSION": "2026.1"
+    },
+    "extensions": [
+      "ms-python.python",
+      "ms-toolsai.jupyter"
+    ]
+}

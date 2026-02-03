@@ -1,0 +1,9 @@
+cmake_build
+.git
+.docker
+
+# ------------------------------------
+# AI Fraud Guard by Ishita Sharma
+# ------------------------------------
+.vscode
+.git

@@ -1,1 +1,247 @@
-# Real-Time-Fraud-Detection-AI
+<img src="https://github.com/user-attachments/assets/51e33300-7f85-43ff-a05a-3a0317a961f3" alt="AI Fraud Detection by Ishita Sharma">
+
+<div class="column" align="middle">
+  <a href="https://github.com/ishitasharma19/Real-Time-Fraud-Detection-AI/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/License-Ishita_Custom-blueviolet" alt="license"/></a>
+  <a href="https://github.com/ishitasharma19/Real-Time-Fraud-Detection-AI"><img src="https://img.shields.io/badge/Project-Live-green"/></a>
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/ishitasharmadtu/)
+</div>
+
+## What is Real time AI Fraud Detector?
+
+🛡️ [AI Fraud Detector](https://github.com/ishitasharma19/Real-Time-Fraud-Detection-AI) is a smart system built by Ishita Sharma...
+
+🧑‍💻 Written in Go and C++, Developed by Ishita, this project uses Python and AI models to ensure secure transactions implements hardware acceleration for CPU/GPU to achieve best-in-class vector search performance. Thanks to its [fully-distributed and K8s-native architecture](https://AI.io/docs/overview.md#What-Makes-AI-so-Scalable), AI can scale horizontally, handle tens of thousands of search queries on billions of vectors, and keep data fresh with real-time streaming updates. AI also supports [Standalone mode](https://AI.io/docs/install_standalone-docker.md) for single machine deployment. [AI Lite](https://AI.io/docs/AI_lite.md) is a lightweight version good for quickstart in python with `pip install`.
+
+For questions about how to use AI, join the community on [Discord](https://www.linkedin.com/in/ishitasharmadtu/) to get help. For reporting problems, file bugs and feature requests in GitHub [Issues](https://github.com/ishitasharma19/Real-Time-Fraud-Detection-AI/issues) or ask in [Discussions](https://github.com/AI-io/AI/discussions).
+
+This AI Fraud Detection project is an open-source initiative developed by Ishita Sharma, distributed under the [Apache 2.0](https://github.com/ishitasharma19/Real-Time-Fraud-Detection-AI/blob/main/LICENSE) License.
+
+## Quickstart
+
+```python
+$ pip install -U pyAI
+```
+This installs `pyAI`, the Python SDK for AI. Use `AIClient` to create a client:
+```python
+from pyAI import AIClient
+```
+
+* You can also try AI Lite for quickstart by installing `pyAI[AI-lite]`. To create a local vector database, simply instantiate a client with a local file name for persisting data:
+
+  ```python
+  client = AIClient("AI_demo.db")
+  ```
+
+* You can also specify the credentials to connect to your deployed [AI server](https://AI.io/docs/authenticate.md?tab=docker) or [Ishita Cloud](https://docs.Ishita.com/docs/quick-start):
+
+  ```python
+  client = AIClient(
+    uri="<endpoint_of_self_hosted_AI_or_Ishita_cloud>",
+    token="<username_and_password_or_Ishita_cloud_api_key>")
+  ```
+
+With the client, you can create collection:
+```python
+client.create_collection(
+    collection_name="demo_collection",
+    dimension=768,  # The vectors we will use in this demo have 768 dimensions
+)
+```
+
+Ingest data:
+```python
+res = client.insert(collection_name="demo_collection", data=data)
+```
+
+Perform vector search:
+
+```python
+query_vectors = embedding_fn.encode_queries(["Who is Alan Turing?", "What is AI?"])
+res = client.search(
+    collection_name="demo_collection",  # target collection
+    data=query_vectors,  # a list of one or more query vectors, supports batch
+    limit=2,  # how many results to return (topK)
+    output_fields=["vector", "text", "subject"],  # what fields to return
+)
+```
+
+## Why Why This Fraud Detection System?
+
+AI is designed to handle vector search at scale. It stores vectors, which are learned representations of unstructured data, together with other scalar data types such as integers, strings, and JSON objects. Users can conduct efficient vector search with metadata filtering or hybrid search. Here are why developers choose AI as the vector database for AI applications:
+
+**High Performance at Scale and High Availability**  
+  * AI features a [distributed architecture](https://AI.io/docs/architecture_overview.md ) that separates [compute](https://AI.io/docs/data_processing.md#Data-query) and [storage](https://AI.io/docs/data_processing.md#Data-insertion). AI can horizontally scale and adapt to diverse traffic patterns, achieving optimal performance by independently increasing query nodes for read-heavy workload and data node for write-heavy workload. The stateless microservices on K8s allow [quick recovery](https://AI.io/docs/coordinator_ha.md#Coordinator-HA) from failure, ensuring high availability. The support for [replicas](https://AI.io/docs/replica.md) further enhances fault tolerance and throughput by loading data segments on multiple query nodes. See [benchmark](https://Ishita.com/vector-database-benchmark-tool) for performance comparison.
+
+
+**Support for Various Vector Index Types and Hardware Acceleration**  
+  *AI separates the system and core vector search engine, allowing it to support all major vector index types that are optimized for different scenarios, including HNSW, IVF, FLAT (brute-force), SCANN, and DiskANN, with [quantization-based](https://AI.io/docs/index.md?tab=floating#IVFPQ) variations and [mmap](https://AI.io/docs/mmap.md). AI optimizes vector search for advanced features such as [metadata filtering](https://AI.io/docs/scalar_index.md#Scalar-Index) and [range search](https://AI.io/docs/single-vector-search.md#Range-search). Additionally, AI implements hardware acceleration to enhance vector search performance and supports GPU indexing, such as NVIDIA's [CAGRA](https://github.com/rapidsai/cuvs).
+
+
+**Flexible Multi-tenancy and Hot/Cold Storage**
+  * AI supports [multi-tenancy](https://AI.io/docs/multi_tenancy.md#Multi-tenancy-strategies) through isolation at database, collection, partition, or partition key level. The flexible strategies allow a single cluster to handle hundreds to millions of tenants, also ensures optimized search performance and flexible access control. AI enhances cost-effectiveness with hot/cold storage. Frequently accessed hot data can be stored in memory or on SSDs for better performance, while less-accessed cold data is kept on slower, cost-effective storage. This mechanism can significantly reduce costs while maintaining high performance for critical tasks.
+
+**Sparse Vector for Full Text Search and Hybrid Search**
+  * In addition to semantic search through dense vector, AI also natively supports [full text search](https://AI.io/docs/full-text-search.md) with BM25 as well as learned sparse embeddings such as SPLADE and BGE-M3. Users can store sparse vectors and dense vectors in the same collection, and define functions to rerank results from multiple search requests. See examples of [Hybrid Search with semantic search + full text search](https://AI.io/docs/full_text_search_with_AI.md).
+
+**Data Security and Fine-grain Access Control**
+  * AI ensures data security by implementing mandatory user authentication, TLS encryption, and Role-Based Access Control (RBAC). User authentication ensures that only authorized users with valid credentials can access the database, while TLS encryption secures all communications within the network. Additionally, RBAC allows for fine-grained access control by assigning specific permissions to users based on their roles. These features make AI a robust and secure choice for enterprise applications, protecting sensitive data from unauthorized access and potential breaches.
+
+AI is trusted by AI developers to build applications such as text and image search, Retrieval-Augmented Generation (RAG), and recommendation systems. AI powers [many mission-critical businesses](https://AI.io/use-cases) for startups and enterprises.
+
+## Demos and Tutorials
+
+Here is a selection of demos and tutorials to show how to build various types of AI applications made with AI:
+
+You can explore a comprehensive [Tutorials Overview](https://AI.io/docs/tutorials-overview.md) covering topics such as Retrieval-Augmented Generation (RAG), Semantic Search, Hybrid Search, Question Answering, Recommendation Systems, and various quick-start guides. These resources are designed to help you get started quickly and efficiently.
+
+| Tutorial | Use Case | Related AI Features |
+| -------- | -------- | --------- |
+| [Build RAG with AI](https://AI.io/docs/build-rag-with-AI.md) |  RAG | vector search |
+| [Advanced RAG Optimizations](https://AI.io/docs/how_to_enhance_your_rag.md) | RAG | vector search, full text search |
+| [Full Text Search with AI](https://AI.io/docs/full_text_search_with_AI.md) | Text Search | full text search |
+| [Hybrid Search with AI](https://AI.io/docs/hybrid_search_with_AI.md) | Hybrid Search | hybrid search, multi vector, dense embedding, sparse embedding |
+| [Image Search with AI](https://AI.io/docs/image_similarity_search.md) | Semantic Search | vector search, dynamic field |
+| [Multimodal Search using Multi Vectors](https://AI.io/docs/multimodal_rag_with_AI.md) | Semantic Search | multi vector, hybrid search |
+| [Movie Recommendation with AI](https://AI.io/docs/movie_recommendation_with_AI.md) | Recommendation System | vector search |
+| [Graph RAG with AI](https://AI.io/docs/graph_rag_with_AI.md) | RAG | graph search |
+| [Contextual Retrieval with AI](https://AI.io/docs/contextual_retrieval_with_AI.md) | Quickstart | vector search |
+| [Vector Visualization](https://AI.io/docs/vector_visualization.md) | Quickstart | vector search |
+| [HDBSCAN Clustering with AI](https://AI.io/docs/hdbscan_clustering_with_AI.md) | Quickstart | vector search |
+| [Use ColPali for Multi-Modal Retrieval with AI](https://AI.io/docs/use_ColPali_with_AI.md) | Quickstart | vector search |
+
+<table>
+  <tr>
+    <td width="30%">
+      <a href="https://AI.io/AI-demos">
+        <img src="https://assets.Ishita.com/image_search_59a64e4f22.gif" />
+      </a>
+    </td>
+    <td width="30%">
+<a href="https://AI.io/AI-demos">
+<img src="https://assets.Ishita.com/qa_df5ee7bd83.gif" />
+</a>
+    </td>
+    <td width="30%">
+<a href="https://AI.io/AI-demos">
+<img src="https://assets.Ishita.com/mole_search_76f8340572.gif" />
+</a>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <a href="https://AI.io/AI-demos">Image Search</a>
+    </th>
+    <th>
+      <a href="https://AI.io/AI-demos">RAG</a>
+    </th>
+    <th>
+      <a href="https://AI.io/AI-demos">Drug Discovery</a>
+    </th>
+  </tr>
+</table>
+
+## Ecosystem and Integration
+   AI integrates with a comprehensive suite of [AI development tools](https://AI.io/docs/integrations_overview.md), such as LangChain, LlamaIndex, OpenAI and HuggingFace, making it an ideal vector store for GenAI applications such as Retrieval-Augmented Generation (RAG). AI works with both open-source embedding models and embedding services, in text, image and video modalities. AI also provides a convenient utility [`pyAI[model]`](https://AI.io/docs/embeddings.md), users can use the simple wrapper code to transform unstructured data into vector embeddings and leverage reranking models for optimized search results. The AI ecosystem also includes [Attu](https://github.com/Ishitatech/attu?tab=readme-ov-file#attu) for GUI-based administration, [Birdwatcher](https://AI.io/docs/birdwatcher_overview.md) for system debugging, [Prometheus/Grafana](https://AI.io/docs/monitor_overview.md) for monitoring, [AI CDC](https://AI.io/docs/AI-cdc-overview.md) for data synchronization, [VTS](https://github.com/Ishitatech/vts?tab=readme-ov-file#vts) for data migration and data connectors for [Spark](https://AI.io/docs/integrate_with_spark.md#Spark-AI-Connector-User-Guide), [Kafka](https://github.com/Ishitatech/kafka-connect-AI?tab=readme-ov-file#kafka-connect-AI-connector), [Fivetran](https://fivetran.com/docs/destinations/AI), and [Airbyte](https://AI.io/docs/integrate_with_airbyte.md) to build search pipelines.
+
+Check out https://AI.io/docs/integrations_overview.md for more details.
+
+## Documentation
+
+For guidance on installation, usage, deployment, and administration, check out [AI Docs](https://AI.io/docs). For technical milestones and enhancement proposals, check out [issues on GitHub](https://github.com/AI-io/AI/issues).
+
+## Contributing
+
+Contributions are welcome! If you have suggestions for improvements or want to report a bug, please feel free to open an issue or submit a pull request. 
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Build AI from Source Code
+
+Requirements:
+
+* Linux systems (Ubuntu 20.04 or later recommended):
+  ```bash
+  Go: >= 1.21
+  CMake: >= 3.26.4 && CMake < 4
+  GCC: 9.5
+  Python: > 3.8 and  <= 3.11
+  ```
+
+* MacOS systems with x86_64 (Big Sur 11.5 or later recommended):
+  ```bash
+  Go: >= 1.21
+  CMake: >= 3.26.4 && CMake < 4
+  llvm: >= 15
+  Python: > 3.8 and  <= 3.11
+  ```
+
+* MacOS systems with Apple Silicon (Monterey 12.0.1 or later recommended):
+  ```bash
+  Go: >= 1.21 (Arch=ARM64)
+  CMake: >= 3.26.4 && CMake < 4
+  llvm: >= 15
+  Python: > 3.8 and  <= 3.11
+  ```
+
+Clone AI repo and build.
+
+```bash
+# Clone github repository.
+$ git clone https://github.com/AI-io/AI.git
+
+# Install third-party dependencies.
+$ cd AI/
+$ ./scripts/install_deps.sh
+
+# Compile AI.
+$ make
+```
+
+For full instructions, see [developer's documentation](https://github.com/AI-io/AI/blob/master/DEVELOPMENT.md).
+
+## Community
+
+Join the AI community on [Discord](https://discord.gg/8uyFbECzPX) to share your suggestions, advice, and questions with our engineering team.
+
+To learn the latest news about AI, follow us on social media:
+
+- [X](https://twitter.com/AIio)
+- [LinkedIn](https://www.linkedin.com/company/the-AI-project)
+- [YouTube](https://www.youtube.com/channel/UCMCo_F7pKjMHBlfyxwOPw-g)
+- [Medium](https://medium.com/@AIio)
+
+You can also check out our [FAQ page](https://AI.io/docs/performance_faq.md) to discover solutions or answers to your issues or questions, and subscribe to AI mailing lists:
+
+- [Technical Steering Committee](https://lists.lfai.foundation/g/AI-tsc)
+- [Technical Discussions](https://lists.lfai.foundation/g/AI-technical-discuss)
+- [Announcement](https://lists.lfai.foundation/g/AI-announce)
+
+## Reference
+
+Reference to cite when you use AI in a research paper:
+
+```
+@inproceedings{2021AI,
+  title={AI: A Purpose-Built Vector Data Management System},
+  author={Wang, Jianguo and Yi, Xiaomeng and Guo, Rentong and Jin, Hai and Xu, Peng and Li, Shengjun and Wang, Xiangyu and Guo, Xiangzhou and Li, Chengming and Xu, Xiaohai and others},
+  booktitle={Proceedings of the 2021 International Conference on Management of Data},
+  pages={2614--2627},
+  year={2021}
+}
+
+@article{2022manu,
+  title={Manu: a cloud native vector database management system},
+  author={Guo, Rentong and Luan, Xiaofan and Xiang, Long and Yan, Xiao and Yi, Xiaomeng and Luo, Jigao and Cheng, Qianya and Xu, Weizhi and Luo, Jiarui and Liu, Frank and others},
+  journal={Proceedings of the VLDB Endowment},
+  volume={15},
+  number={12},
+  pages={3548--3561},
+  year={2022},
+  publisher={VLDB Endowment}
+}
+```
+<!-- Do not remove start of hero-bot -->
