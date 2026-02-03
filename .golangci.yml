@@ -32,15 +32,15 @@ linters-settings:
     sections:
       - standard
       - default
-      - prefix(github.com/milvus-io)
+      - prefix (github.com/ishitasharma19/Real-Time-Fraud-Detection-AI)
     custom-order: true
   govet:
     enable: # add extra linters
       - nilness
   gofumpt:
-    module-path: github.com/milvus-io
+    module-path: github.com/ishitasharma19/Real-Time-Fraud-Detection-AI
   goimports:
-    local-prefixes: github.com/milvus-io
+    local-prefixes: github.com/ishitasharma19/Real-Time-Fraud-Detection-AI
   revive:
     rules:
       - name: unused-parameter
@@ -112,7 +112,7 @@ linters-settings:
           - pkg: "github.com/golang/protobuf/proto"
             desc: "not allowed, protobuf v1 is deprecated, use google.golang.org/protobuf/proto instead"
           - pkg: "github.com/pingcap/log"
-            desc: "not allowed, use github.com/milvus-io/milvus/pkg/v2/log"
+            desc: "not allowed, use internal log package"
   forbidigo:
     forbid:
       - '^time\.Tick$'
