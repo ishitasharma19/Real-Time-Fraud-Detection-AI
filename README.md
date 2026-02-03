@@ -10,7 +10,7 @@
 
 🛡️ [AI Fraud Detector](https://github.com/ishitasharma19/Real-Time-Fraud-Detection-AI) is a smart system built by Ishita Sharma...
 
-🧑‍💻 Written in Go and C++, Developed by Ishita, this project uses Python and AI models to ensure secure transactions implements hardware acceleration for CPU/GPU to achieve best-in-class vector search performance. Thanks to its [fully-distributed and K8s-native architecture](https://AI.io/docs/overview.md#What-Makes-AI-so-Scalable), AI can scale horizontally, handle tens of thousands of search queries on billions of vectors, and keep data fresh with real-time streaming updates. AI also supports [Standalone mode](https://AI.io/docs/install_standalone-docker.md) for single machine deployment. [AI Lite](https://AI.io/docs/AI_lite.md) is a lightweight version good for quickstart in python with `pip install`.
+🧑‍💻 Written in Go and C++, Developed by Ishita, this project uses Python and AI models to ensure secure transactions implements hardware acceleration for CPU/GPU to achieve best-in-class vector search performance.
 
 For questions about how to use AI, join the community on [Discord](https://www.linkedin.com/in/ishitasharmadtu/) to get help. For reporting problems, file bugs and feature requests in GitHub [Issues](https://github.com/ishitasharma19/Real-Time-Fraud-Detection-AI/issues) or ask in [Discussions](https://github.com/AI-io/AI/discussions).
 
@@ -92,58 +92,7 @@ AI is trusted by AI developers to build applications such as text and image sear
 
 Here is a selection of demos and tutorials to show how to build various types of AI applications made with AI:
 
-You can explore a comprehensive [Tutorials Overview](https://AI.io/docs/tutorials-overview.md) covering topics such as Retrieval-Augmented Generation (RAG), Semantic Search, Hybrid Search, Question Answering, Recommendation Systems, and various quick-start guides. These resources are designed to help you get started quickly and efficiently.
-
-| Tutorial | Use Case | Related AI Features |
-| -------- | -------- | --------- |
-| [Build RAG with AI](https://AI.io/docs/build-rag-with-AI.md) |  RAG | vector search |
-| [Advanced RAG Optimizations](https://AI.io/docs/how_to_enhance_your_rag.md) | RAG | vector search, full text search |
-| [Full Text Search with AI](https://AI.io/docs/full_text_search_with_AI.md) | Text Search | full text search |
-| [Hybrid Search with AI](https://AI.io/docs/hybrid_search_with_AI.md) | Hybrid Search | hybrid search, multi vector, dense embedding, sparse embedding |
-| [Image Search with AI](https://AI.io/docs/image_similarity_search.md) | Semantic Search | vector search, dynamic field |
-| [Multimodal Search using Multi Vectors](https://AI.io/docs/multimodal_rag_with_AI.md) | Semantic Search | multi vector, hybrid search |
-| [Movie Recommendation with AI](https://AI.io/docs/movie_recommendation_with_AI.md) | Recommendation System | vector search |
-| [Graph RAG with AI](https://AI.io/docs/graph_rag_with_AI.md) | RAG | graph search |
-| [Contextual Retrieval with AI](https://AI.io/docs/contextual_retrieval_with_AI.md) | Quickstart | vector search |
-| [Vector Visualization](https://AI.io/docs/vector_visualization.md) | Quickstart | vector search |
-| [HDBSCAN Clustering with AI](https://AI.io/docs/hdbscan_clustering_with_AI.md) | Quickstart | vector search |
-| [Use ColPali for Multi-Modal Retrieval with AI](https://AI.io/docs/use_ColPali_with_AI.md) | Quickstart | vector search |
-
-<table>
-  <tr>
-    <td width="30%">
-      <a href="https://AI.io/AI-demos">
-        <img src="https://assets.Ishita.com/image_search_59a64e4f22.gif" />
-      </a>
-    </td>
-    <td width="30%">
-<a href="https://AI.io/AI-demos">
-<img src="https://assets.Ishita.com/qa_df5ee7bd83.gif" />
-</a>
-    </td>
-    <td width="30%">
-<a href="https://AI.io/AI-demos">
-<img src="https://assets.Ishita.com/mole_search_76f8340572.gif" />
-</a>
-    </td>
-  </tr>
-  <tr>
-    <th>
-      <a href="https://AI.io/AI-demos">Image Search</a>
-    </th>
-    <th>
-      <a href="https://AI.io/AI-demos">RAG</a>
-    </th>
-    <th>
-      <a href="https://AI.io/AI-demos">Drug Discovery</a>
-    </th>
-  </tr>
-</table>
-
-## Ecosystem and Integration
-   AI integrates with a comprehensive suite of [AI development tools](https://AI.io/docs/integrations_overview.md), such as LangChain, LlamaIndex, OpenAI and HuggingFace, making it an ideal vector store for GenAI applications such as Retrieval-Augmented Generation (RAG). AI works with both open-source embedding models and embedding services, in text, image and video modalities. AI also provides a convenient utility [`pyAI[model]`](https://AI.io/docs/embeddings.md), users can use the simple wrapper code to transform unstructured data into vector embeddings and leverage reranking models for optimized search results. The AI ecosystem also includes [Attu](https://github.com/Ishitatech/attu?tab=readme-ov-file#attu) for GUI-based administration, [Birdwatcher](https://AI.io/docs/birdwatcher_overview.md) for system debugging, [Prometheus/Grafana](https://AI.io/docs/monitor_overview.md) for monitoring, [AI CDC](https://AI.io/docs/AI-cdc-overview.md) for data synchronization, [VTS](https://github.com/Ishitatech/vts?tab=readme-ov-file#vts) for data migration and data connectors for [Spark](https://AI.io/docs/integrate_with_spark.md#Spark-AI-Connector-User-Guide), [Kafka](https://github.com/Ishitatech/kafka-connect-AI?tab=readme-ov-file#kafka-connect-AI-connector), [Fivetran](https://fivetran.com/docs/destinations/AI), and [Airbyte](https://AI.io/docs/integrate_with_airbyte.md) to build search pipelines.
-
-Check out https://AI.io/docs/integrations_overview.md for more details.
+You can explore a comprehensive [Tutorials Overview](https://AI.io/docs/tutorials-overview.md) covering topics such as Retrieval-Augmented Generation (RAG), Semantic Search, Hybrid Search, Question Answering, Recommendation Systems, and various quick-start guides. These resources are designed to help you get started quickly and efficiently
 
 ## Documentation
 
@@ -220,28 +169,4 @@ You can also check out our [FAQ page](https://AI.io/docs/performance_faq.md) to 
 - [Technical Discussions](https://lists.lfai.foundation/g/AI-technical-discuss)
 - [Announcement](https://lists.lfai.foundation/g/AI-announce)
 
-## Reference
 
-Reference to cite when you use AI in a research paper:
-
-```
-@inproceedings{2021AI,
-  title={AI: A Purpose-Built Vector Data Management System},
-  author={Wang, Jianguo and Yi, Xiaomeng and Guo, Rentong and Jin, Hai and Xu, Peng and Li, Shengjun and Wang, Xiangyu and Guo, Xiangzhou and Li, Chengming and Xu, Xiaohai and others},
-  booktitle={Proceedings of the 2021 International Conference on Management of Data},
-  pages={2614--2627},
-  year={2021}
-}
-
-@article{2022manu,
-  title={Manu: a cloud native vector database management system},
-  author={Guo, Rentong and Luan, Xiaofan and Xiang, Long and Yan, Xiao and Yi, Xiaomeng and Luo, Jigao and Cheng, Qianya and Xu, Weizhi and Luo, Jiarui and Liu, Frank and others},
-  journal={Proceedings of the VLDB Endowment},
-  volume={15},
-  number={12},
-  pages={3548--3561},
-  year={2022},
-  publisher={VLDB Endowment}
-}
-```
-<!-- Do not remove start of hero-bot -->
